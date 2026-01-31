@@ -3,318 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard v2.0 - MazkiplayCyberSecurity</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-    <script>
-        tailwind.config = { 
-            theme: { 
-                extend: { 
-                    animation: { 
-                        'bounce-slow': 'bounce 3s infinite',
-                        'spin-slow': 'spin 3s linear infinite'
-                    } 
-                } 
-            } 
-        }
-    </script>
+    <title>MazkiplayCyberSecurity - Red Team Dashboard v2.1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono&display=swap');
-        * { font-family: 'Orbitron', monospace; }
-        <script src="script.js" defer></script>
-        
-        /* SCROLL FIX PERMANENT */
-        html, body { 
-            overflow-x: hidden !important; 
-            scroll-behavior: smooth;
-            height: auto !important;
-            min-height: 100vh;
-        }
-        .matrix-bg { 
-            min-height: 100vh; 
-            overflow: visible !important;
-            position: relative;
-        }
-        
-        .tool-card { 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-            cursor: pointer;
-            user-select: none;
-        }
-        .tool-card:hover { 
-            transform: translateY(-12px) scale(1.02) !important; 
-            box-shadow: 0 25px 50px rgba(239,68,68,0.4) !important;
-        }
-        
-        /* Matrix Effect */
-        .matrix-bg::before {
-            content: '1 0 1 0 1 0 1 0 1 0 1 0 1 0 1';
-            animation: matrix 20s linear infinite;
-            color: rgba(0,255,0,0.1);
-            position: absolute;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 24px;
-            top: 0; left: 0;
-            pointer-events: none;
-            z-index: 0;
-            width: 100%;
-            height: 100%;
-        }
-        @keyframes matrix { 
-            0%{transform:translateY(-100%) rotateX(0);} 
-            100%{transform:translateY(100vh) rotateX(360deg);} 
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
-            .tool-card { padding: 1.5rem !important; }
-            .container { padding: 1rem !important; padding-bottom: 3rem !important; }
-        }
-        
-        /* Touch Scroll */
-        @supports (-webkit-overflow-scrolling: touch) {
-            html { -webkit-overflow-scrolling: touch; }
-        }
-        
-        /* Custom Animations */
-        @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    </style>
+    <link href="style.css" rel="stylesheet">
 </head>
-<body class="matrix-bg bg-gradient-to-br from-red-900 via-black to-gray-900 text-white overflow-x-hidden">
-
-    <!-- HEADER FIXED -->
-    <header class="bg-black/90 backdrop-blur-xl border-b-2 border-red-500/50 sticky top-0 z-50">
-        <div class="container mx-auto px-4 sm:px-6 py-4">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+<body class="matrix-bg">
+    
+    <!-- HEADER -->
+    <header class="header-fixed">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-white rounded-full p-2 shadow-lg animate-pulse">
-                        <i class="fas fa-shield-alt text-black text-xl"></i>
+                    <div class="logo-pulse">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-black bg-gradient-to-r from-red-400 to-yellow-400 bg-clip-text text-transparent">
-                            MazkiplayCyberSecurity
-                        </h1>
-                        <p class="text-xs text-red-400 font-mono">Red Team Dashboard v2.0 - LIVE</p>
+                        <h1 class="title-gradient">MazkiplayCyberSecurity</h1>
+                        <p class="status-live">v2.1 LIVE | Red Team</p>
                     </div>
                 </div>
-                <div class="flex items-center space-x-2 sm:space-x-4">
-                    <span class="px-3 py-1 bg-green-500/30 text-green-400 text-xs rounded-full font-mono border border-green-500/50 animate-pulse">
-                        <i class="fas fa-circle mr-1 text-xs"></i>ONLINE
-                    </span>
-                    <a href="index.html" class="px-4 py-2 bg-red-600/60 hover:bg-red-500/80 text-white rounded-xl text-sm transition-all hover:scale-105 shadow-lg">
-                        <i class="fas fa-sign-out-alt mr-1"></i>Logout
-                    </a>
+                <div class="status-indicators">
+                    <span class="status-online">ONLINE</span>
+                    <a href="index.html" class="logout-btn">Logout</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <div class="container mx-auto px-4 sm:px-6 pb-12 pt-4 sm:pt-12 relative z-10">
-        
-        <!-- HERO -->
-        <div class="text-center mb-12 sm:mb-20 pb-12">
-            <div class="inline-block">
-                <h2 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 bg-clip-text text-transparent drop-shadow-2xl">
-                    <i class="fas fa-terminal mr-6 animate-pulse"></i>
-                    RED TEAM DASHBOARD
-                </h2>
+    <!-- MAIN -->
+    <main class="main-content">
+        <section class="hero-section">
+            <h2 class="hero-title">
+                <i class="fas fa-terminal"></i> RED TEAM DASHBOARD
+            </h2>
+            <p class="hero-subtitle">Sego Megono Cyber Security - Authorized Pentesting</p>
+            <div class="features-grid">
+                <span class="feature-badge">10 Tools Live</span>
+                <span class="feature-badge">API Connected</span>
+                <span class="feature-badge">PDF Reports</span>
             </div>
-            <div class="max-w-3xl mx-auto">
-                <p class="text-lg sm:text-xl text-gray-300 leading-relaxed mb-8">
-                    🚀 Platform pentesting lengkap untuk <strong>Sego Megono Cyber Security</strong>
-                </p>
-                <div class="flex flex-wrap justify-center gap-4 text-sm bg-black/50 p-4 rounded-2xl border border-gray-700/50">
-                    <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full"><i class="fas fa-plug mr-1"></i>10 Tools Live</span>
-                    <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full"><i class="fas fa-download mr-1"></i>PDF Reports</span>
-                    <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full"><i class="fas fa-shield-alt mr-1"></i>Authorized</span>
+        </section>
+
+        <!-- 10 TOOLS GRID -->
+        <section class="tools-grid">
+            <!-- TOOL 1 PHONE -->
+            <div class="tool-card blue-tool" onclick="launchTool('phone')">
+                <div class="tool-icon">
+                    <i class="fas fa-mobile-alt"></i>
                 </div>
+                <h3>01. Phone Intel</h3>
+                <p>OSINT +62 • AbstractAPI</p>
+                <button>LAUNCH</button>
             </div>
-        </div>
 
-        <!-- 🔥 10 TOOLS GRID 5x2 RESPONSIVE -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 sm:gap-8 mb-20">
-
-            <!-- TOOL 01: PHONE INTEL -->
-            <div class="tool-card bg-gradient-to-b from-black/80 to-gray-900/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border-2 border-blue-500/30 hover:border-blue-400/80 shadow-2xl hover:shadow-3xl group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center group-hover:animate-spin-slow shadow-2xl group-hover:shadow-blue-500/25">
-                    <i class="fas fa-mobile-alt text-2xl text-white"></i>
+            <!-- TOOL 2 SOCIAL -->
+            <div class="tool-card purple-tool" onclick="launchTool('social')">
+                <div class="tool-icon">
+                    <i class="fas fa-users"></i>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-4 text-center group-hover:text-blue-400 transition-all">01. Phone Intel</h3>
-                <p class="text-gray-400 text-sm mb-6 text-center leading-relaxed">OSINT +62<br><small>Carrier • Location • Validity</small></p>
-                <button onclick="launchTool('phone')" class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 group-hover:scale-105">
-                    <i class="fas fa-rocket mr-2"></i>LAUNCH
-                </button>
+                <h3>02. Social OSINT</h3>
+                <p>FB • IG • TikTok</p>
+                <button>SCAN</button>
             </div>
 
-            <!-- TOOL 02: SOCIAL OSINT -->
-            <div class="tool-card bg-gradient-to-b from-black/80 to-gray-900/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border-2 border-purple-500/30 hover:border-purple-400/80 shadow-2xl hover:shadow-3xl group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center group-hover:animate-pulse shadow-2xl group-hover:shadow-purple-500/25">
-                    <i class="fas fa-users text-2xl text-white"></i>
+            <!-- TOOL 3 LOCATION -->
+            <div class="tool-card green-tool" onclick="launchTool('location')">
+                <div class="tool-icon">
+                    <i class="fas fa-map-marker-alt"></i>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-4 text-center group-hover:text-purple-400 transition-all">02. Social OSINT</h3>
-                <p class="text-gray-400 text-sm mb-6 text-center leading-relaxed">Akun medsos via HP</p>
-                <button onclick="launchTool('social')" class="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 text-white font-bold py-3 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 group-hover:scale-105">
-                    <i class="fas fa-search mr-2"></i>SCAN
-                </button>
+                <h3>03. Location Tracker</h3>
+                <p>SIM Network</p>
+                <button>TRACK</button>
             </div>
 
-            <!-- TOOL 03: LOCATION TRACKER -->
-            <div class="tool-card bg-gradient-to-b from-black/80 to-gray-900/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border-2 border-emerald-500/30 hover:border-emerald-400/80 shadow-2xl hover:shadow-3xl group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 bg-gradient-to-r from-emerald-500 to-green-500 rounded-2xl flex items-center justify-center group-hover:animate-bounce shadow-2xl group-hover:shadow-emerald-500/25">
-                    <i class="fas fa-map-marker-alt text-2xl text-white"></i>
+            <!-- TOOL 4 WHATSAPP -->
+            <div class="tool-card orange-tool" onclick="launchTool('whatsapp')">
+                <div class="tool-icon">
+                    <i class="fab fa-whatsapp"></i>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-4 text-center group-hover:text-emerald-400 transition-all">03. Location Tracker</h3>
-                <p class="text-gray-400 text-sm mb-6 text-center leading-relaxed">SIM network tracking</p>
-                <button onclick="launchTool('location')" class="w-full bg-gradient-to-r from-emerald-600 to-green-500 hover:from-emerald-500 hover:to-green-400 text-white font-bold py-3 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 group-hover:scale-105">
-                    <i class="fas fa-crosshairs mr-2"></i>TRACK
-                </button>
+                <h3>04. WhatsApp Intel</h3>
+                <p>Profile Intel</p>
+                <button>ANALYZE</button>
             </div>
 
-            <!-- TOOL 04: WHATSAPP INTEL -->
-            <div class="tool-card bg-gradient-to-b from-black/80 to-gray-900/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border-2 border-orange-500/30 hover:border-orange-400/80 shadow-2xl hover:shadow-3xl group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center group-hover:animate-pulse shadow-2xl group-hover:shadow-orange-500/25">
-                    <i class="fab fa-whatsapp text-2xl text-white"></i>
+            <!-- TOOL 5 KTP -->
+            <div class="tool-card red-tool" onclick="launchTool('ktp')">
+                <div class="tool-icon">
+                    <i class="fas fa-id-card"></i>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-4 text-center group-hover:text-orange-400 transition-all">04. WhatsApp Intel</h3>
-                <p class="text-gray-400 text-sm mb-6 text-center leading-relaxed">Profile & activity</p>
-                <button onclick="launchTool('whatsapp')" class="w-full bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-500 hover:to-red-400 text-white font-bold py-3 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 group-hover:scale-105">
-                    <i class="fas fa-eye mr-2"></i>ANALYZE
-                </button>
+                <h3>05. KTP/NIK Lookup</h3>
+                <p>ID Intelligence</p>
+                <button>QUERY</button>
             </div>
 
-            <!-- TOOL 05: KTP/NIK LOOKUP -->
-            <div class="tool-card bg-gradient-to-b from-black/80 to-gray-900/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border-2 border-red-500/30 hover:border-red-400/80 shadow-2xl hover:shadow-3xl group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl flex items-center justify-center group-hover:animate-spin-slow shadow-2xl group-hover:shadow-red-500/25">
-                    <i class="fas fa-id-card text-2xl text-white"></i>
+            <!-- TOOL 6 PHISHING -->
+            <div class="tool-card yellow-tool" onclick="launchTool('phishing')">
+                <div class="tool-icon">
+                    <i class="fas fa-fish"></i>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-4 text-center group-hover:text-red-400 transition-all">05. KTP/NIK Lookup</h3>
-                <p class="text-gray-400 text-sm mb-6 text-center leading-relaxed">ID intelligence</p>
-                <button onclick="launchTool('ktp')" class="w-full bg-gradient-to-r from-red-600 to-pink-500 hover:from-red-500 hover:to-pink-400 text-white font-bold py-3 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 group-hover:scale-105">
-                    <i class="fas fa-search mr-2"></i>QUERY
-                </button>
+                <h3>06. Phishing Arsenal</h3>
+                <p>Template Generator</p>
+                <button>GENERATE</button>
             </div>
 
-            <!-- TOOL 06: PHISHING ARSENAL -->
-            <div class="tool-card bg-gradient-to-b from-black/80 to-gray-900/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border-2 border-yellow-500/30 hover:border-yellow-400/80 shadow-2xl hover:shadow-3xl group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-2xl flex items-center justify-center group-hover:animate-bounce shadow-2xl group-hover:shadow-yellow-500/25">
-                    <i class="fas fa-fish text-2xl text-black"></i>
+            <!-- TOOL 7 EMAIL -->
+            <div class="tool-card cyan-tool" onclick="launchTool('email')">
+                <div class="tool-icon">
+                    <i class="fas fa-envelope"></i>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-4 text-center group-hover:text-yellow-400 transition-all">06. Phishing Arsenal</h3>
-                <p class="text-gray-400 text-sm mb-6 text-center leading-relaxed">Templates banking</p>
-                <button onclick="launchTool('phishing')" class="w-full bg-gradient-to-r from-yellow-600 to-amber-500 hover:from-yellow-500 hover:to-amber-400 text-black font-bold py-3 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 group-hover:scale-105">
-                    <i class="fas fa-bolt mr-2"></i>GENERATE
-                </button>
+                <h3>07. Email Reputation</h3>
+                <p>Spam Score Check</p>
+                <button>CHECK</button>
             </div>
 
-            <!-- TOOL 07: EMAIL REPUTATION -->
-            <div class="tool-card bg-gradient-to-b from-black/80 to-gray-900/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border-2 border-cyan-500/30 hover:border-cyan-400/80 shadow-2xl hover:shadow-3xl group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center group-hover:animate-pulse shadow-2xl group-hover:shadow-cyan-500/25">
-                    <i class="fas fa-envelope text-2xl text-white"></i>
+            <!-- TOOL 8 DOMAIN -->
+            <div class="tool-card indigo-tool" onclick="launchTool('domain')">
+                <div class="tool-icon">
+                    <i class="fas fa-globe"></i>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-4 text-center group-hover:text-cyan-400 transition-all">07. Email Reputation</h3>
-                <p class="text-gray-400 text-sm mb-6 text-center leading-relaxed">Score & verification</p>
-                <button onclick="launchTool('email')" class="w-full bg-gradient-to-r from-cyan-600 to-teal-500 hover:from-cyan-500 hover:to-teal-400 text-white font-bold py-3 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 group-hover:scale-105">
-                    <i class="fas fa-chart-line mr-2"></i>CHECK
-                </button>
+                <h3>08. Domain Recon</h3>
+                <p>WHOIS + DNS</p>
+                <button>ENUMERATE</button>
             </div>
 
-            <!-- TOOL 08: DOMAIN RECON -->
-            <div class="tool-card bg-gradient-to-b from-black/80 to-gray-900/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border-2 border-indigo-500/30 hover:border-indigo-400/80 shadow-2xl hover:shadow-3xl group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-2xl flex items-center justify-center group-hover:animate-spin-slow shadow-2xl group-hover:shadow-indigo-500/25">
-                    <i class="fas fa-globe text-2xl text-white"></i>
+            <!-- TOOL 9 RAT -->
+            <div class="tool-card gray-tool" onclick="launchTool('rat')">
+                <div class="tool-icon">
+                    <i class="fab fa-android"></i>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-4 text-center group-hover:text-indigo-400 transition-all">08. Domain Recon</h3>
-                <p class="text-gray-400 text-sm mb-6 text-center leading-relaxed">WHOIS • DNS • Subdomains</p>
-                <button onclick="launchTool('domain')" class="w-full bg-gradient-to-r from-indigo-600 to-violet-500 hover:from-indigo-500 hover:to-violet-400 text-white font-bold py-3 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 group-hover:scale-105">
-                    <i class="fas fa-dna mr-2"></i>ENUMERATE
-                </button>
+                <h3>09. Android RAT</h3>
+                <p>APK Payload</p>
+                <button>BUILD</button>
             </div>
 
-            <!-- TOOL 09: ANDROID RAT -->
-            <div class="tool-card bg-gradient-to-b from-black/80 to-gray-900/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border-2 border-gray-500/30 hover:border-gray-400/80 shadow-2xl hover:shadow-3xl group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 bg-gradient-to-r from-gray-600 to-zinc-500 rounded-2xl flex items-center justify-center group-hover:animate-bounce shadow-2xl group-hover:shadow-gray-500/25">
-                    <i class="fab fa-android text-2xl text-white"></i>
+            <!-- TOOL 10 AI -->
+            <div class="tool-card white-tool" onclick="launchTool('ai')">
+                <div class="tool-icon">
+                    <i class="fas fa-brain"></i>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-4 text-center group-hover:text-gray-400 transition-all">09. Android RAT</h3>
-                <p class="text-gray-400 text-sm mb-6 text-center leading-relaxed">Payload generator</p>
-                <button onclick="launchTool('rat')" class="w-full bg-gradient-to-r from-gray-700 to-zinc-500 hover:from-gray-600 hover:to-zinc-400 text-white font-bold py-3 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 group-hover:scale-105">
-                    <i class="fas fa-bug mr-2"></i>BUILD
-                </button>
+                <h3>10. AI Pentest</h3>
+                <p>OpenAI Advisor</p>
+                <button>QUERY</button>
             </div>
+        </section>
+    </main>
 
-            <!-- TOOL 10: AI PENTEST -->
-            <div class="tool-card bg-gradient-to-b from-black/80 to-gray-900/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border-2 border-white/30 hover:border-white/80 shadow-2xl hover:shadow-3xl group">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 bg-gradient-to-r from-white to-gray-200 rounded-2xl flex items-center justify-center group-hover:animate-pulse shadow-2xl group-hover:shadow-white/25">
-                    <i class="fas fa-brain text-2xl text-black"></i>
-                </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-4 text-center group-hover:text-white transition-all">10. AI Pentest Assistant</h3>
-                <p class="text-gray-400 text-sm mb-6 text-center leading-relaxed">OpenAI security advisor</p>
-                <button onclick="launchTool('ai')" class="w-full bg-gradient-to-r from-white to-gray-200 hover:from-gray-100 hover:to-white text-black font-bold py-3 px-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 group-hover:scale-105">
-                    <i class="fas fa-robot mr-2"></i>QUERY AI
-                </button>
-            </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 Sego Megono Cyber Security | Authorized Only</p>
+    </footer>
 
-        </div>
-
-        <!-- FOOTER -->
-        <div class="text-center py-12 border-t-2 border-gray-800/50 mt-20 pt-12">
-            <p class="text-gray-500 text-sm">
-                <i class="fas fa-shield-check text-green-400 mr-2"></i>
-                © 2026 Sego Megono Cyber Security | Ethical Pentesting Only | Red Team Authorized
-            </p>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT FULL 10 TOOLS -->
-    <script>
-        // AUTH CHECK
-        if (localStorage.getItem('mazkiplayAuth') !== 'granted') {
-            alert('🔐 Access Denied! Redirecting...');
-            window.location.href = 'index.html';
-        }
-
-        // 10 TOOLS CONFIG
-        const tools = {
-            phone: '📱 PHONE INTEL +62 LIVE!\n✅ AbstractAPI Connected\n📊 Report: Carrier + Location + Validity',
-            social: '👥 SOCIAL OSINT SCANNER!\n✅ Facebook • Instagram • TikTok\n📱 Enter Indonesian phone number',
-            location: '📍 LOCATION TRACKER!\n✅ SIM Network Mapping\n🗺️ Real-time positioning data',
-            whatsapp: '💬 WHATSAPP INTEL!\n✅ Profile + Activity Log\n👤 Last seen + status extraction',
-            ktp: '🆔 KTP/NIK LOOKUP!\n✅ Indonesian ID Intelligence\n📋 Full profile + province data',
-            phishing: '🎣 PHISHING ARSENAL!\n✅ Banking + Social Templates\n⚡ HTML/CSS/JS payload generator',
-            email: '📧 EMAIL REPUTATION!\n✅ AbstractAPI Score + MX\n⚠️ Spam/Deliverability analysis',
-            domain: '🌐 DOMAIN RECON!\n✅ WHOIS • DNS • Subdomains\n🔍 Full enumeration + screenshots',
-            rat: '🤖 ANDROID RAT BUILDER!\n✅ Payload generator v2.0\n📱 Camera • Mic • Location • Files',
-            ai: '🧠 AI PENTEST ASSISTANT!\n✅ OpenAI GPT-4 Security\n💡 Automated attack recommendations'
-        };
-
-        function launchTool(tool) {
-            console.log(`🚀 [${new Date().toLocaleTimeString('id-ID')}] Mazkiplay: ${tool.toUpperCase()} LAUNCHED`);
-            console.table({
-                Tool: tool.toUpperCase(),
-                Status: 'SUCCESS ✅',
-                Timestamp: new Date().toLocaleString('id-ID'),
-                Team: 'Sego Megono Cyber Security'
-            });
-            
-            // TOOL-SPECIFIC ALERT
-            alert(tools[tool] || `${tool.toUpperCase()} ACTIVATED!\n\n✅ Ready for target input\n📥 Auto PDF Report generated\n\nCopy console untuk log!`);
-        }
-
-        // SCROLL PERFECT
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('✅ Mazkiplay Dashboard v2.0 LOADED');
-            console.log('📱 Scroll: ENABLED | 10 Tools: LIVE | Auth: OK');
-            document.body.style.overflowY = 'auto';
-        });
-
-        // MOBILE TOUCH
-        document.addEventListener('touchmove', () => {}, { passive: true });
-    </script>
-
+    <!-- SCRIPTS -->
+    <script src="script.js"></script>
 </body>
 </html>
