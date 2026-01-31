@@ -10,6 +10,22 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        /* SCROLL FIX + RESPONSIVE */
+html, body {
+    overflow-x: hidden !important;
+    scroll-behavior: smooth;
+}
+.matrix-bg {
+    min-height: 100vh;
+    overflow: visible !important;
+}
+@media (max-height: 800px) {
+    .container { padding-bottom: 4rem !important; }
+}
+/* Mobile Scroll Fix */
+@supports (-webkit-overflow-scrolling: touch) {
+    body { -webkit-overflow-scrolling: touch; }
+}
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono&display=swap');
         * { font-family: 'Orbitron', monospace; }
         .tool-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
