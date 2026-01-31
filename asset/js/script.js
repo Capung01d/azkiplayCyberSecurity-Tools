@@ -13,8 +13,8 @@ const MAZKI_CONFIG = {
     version: '2.0.1',
     team: 'Sego Megono Cyber Security',
     apiKeys: {
-        abstractapi: 'YOUR_ABSTRACTAPI_KEY_HERE', // Ganti dengan key kamu
-        openai: 'YOUR_OPENAI_KEY_HERE',           // Ganti dengan key kamu
+        abstractapi: '23ed5b5d4b6f407495cea0dce6aa140a&phone=14152007986', // Ganti dengan key kamu
+        openai: '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',           // Ganti dengan key kamu
     },
     indonesiaPrefix: '+62',
     reportPath: 'reports/'
