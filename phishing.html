@@ -3,234 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phishing Arsenal v3.0 - MazkiplayCyberSecurity</title>
+    <title>🎣 PHISHING ARSENAL v4.0 - MazkiplayCyberSecurity</title>
     <style>
-        * { font-family: 'Courier New', monospace !important; }
+        * { 
+            font-family: 'Courier New', Consolas, monospace !important; 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box;
+        }
         body { 
-            background: linear-gradient(135deg, #000428 0%, #004e92 100%) !important;
+            background: linear-gradient(135deg, #0a0a23 0%, #1a1a3d 50%, #004e92 100%) !important;
             color: #00ff41 !important;
-            margin: 0; padding: 0; min-height: 100vh;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        .header { 
-            background: rgba(0,0,0,0.98); 
-            border-bottom: 5px solid #00ff41;
-            padding: 20px;
+        
+        /* HEADER */
+        .header {
+            background: rgba(0,0,0,0.95);
+            border-bottom: 4px solid #00ff41;
+            padding: 20px 40px;
             position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(10px);
         }
-        .logo { font-size: 2.2rem; color: #00ff41; margin-right: 30px; }
-        h1 { font-size: 2.5rem; margin: 0; }
-        .template-card { 
-            background: rgba(0,20,40,0.95) !important;
-            border: 3px solid #00ff41 !important;
-            cursor: pointer !important;
-            transition: all 0.4s ease !important;
-            padding: 25px !important;
-            border-radius: 20px !important;
-            margin: 20px !important;
-            height: 250px !important;
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: space-between !important;
-            color: white !important;
-            text-decoration: none !important;
-            box-shadow: 0 10px 30px rgba(0,255,65,0.3);
+        .header-content {
+            max-width: 1400px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
         }
-        .template-card:hover { 
-            background: rgba(0,255,65,0.25) !important;
-            transform: translateY(-10px) scale(1.03) !important;
-            box-shadow: 0 20px 50px rgba(0,255,65,0.6) !important;
-        }
-        .icon-phish { 
-            font-size: 4rem !important; 
-            margin-bottom: 15px !important;
+        .logo {
+            font-size: 2.5rem; 
+            color: #00ff41; 
+            font-weight: bold;
             text-shadow: 0 0 20px #00ff41;
         }
-        .qr-code { 
-            width: 160px !important; 
-            height: 160px !important; 
-            border: 4px solid #00ff41 !important;
-            background: #f8f9fa !important;
-            margin: 0 auto 10px !important;
-            border-radius: 15px !important;
+        .header h1 { font-size: 1.8rem; margin: 0; }
+        .nav-buttons {
+            display: flex; gap: 15px;
         }
-        .btn-phish { 
-            background: linear-gradient(45deg, #ff0040, #ff4081) !important;
+        .btn {
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #00ff41, #00cc33);
+            color: #000 !important;
+            box-shadow: 0 5px 20px rgba(0,255,65,0.4);
+        }
+        .btn-phish {
+            background: linear-gradient(45deg, #ff0040, #ff4081);
             color: white !important;
-            padding: 15px 25px !important;
-            border-radius: 30px !important;
-            font-weight: bold !important;
-            border: none !important;
-            cursor: pointer !important;
-            font-size: 14px !important;
-            width: 100% !important;
-            margin-top: 10px !important;
-            box-shadow: 0 5px 15px rgba(255,0,64,0.4);
+            box-shadow: 0 5px 20px rgba(255,0,64,0.4);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,255,65,0.6); }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: rgba(0,0,0,0.3);
+        }
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px #00ff41;
+        }
+        .hero-subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 50px;
+        }
+        .steps-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+        .step {
+            background: rgba(0,20,40,0.9);
+            border: 2px solid #00ff41;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .step:hover {
+            background: rgba(0,255,65,0.1);
+            transform: translateY(-10px);
+        }
+        .step-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        .step h3 { font-size: 1.8rem; margin-bottom: 15px; }
+
+        /* TEMPLATES */
+        .templates-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
         .templates-grid {
-            display: grid !important;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
-            gap: 25px !important;
-            padding: 40px 20px !important;
-            max-width: 1400px !important;
-            margin: 0 auto !important;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
         }
-        .hero { 
-            padding: 80px 20px 60px !important; 
-            text-align: center !important; 
+        .template-card {
+            background: rgba(0,20,40,0.95);
+            border: 3px solid #00ff41;
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
         }
-        .hero h2 { font-size: 3.5rem !important; margin-bottom: 30px !important; }
-        .hosting-grid {
-            display: grid !important;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-            gap: 30px !important;
-            max-width: 1200px !important;
-            margin: 0 auto !important;
-            padding: 40px !important;
-            background: rgba(0,0,0,0.85) !important;
-            border-radius: 25px !important;
-            border: 3px solid #00ff41 !important;
-            margin-bottom: 40px !important;
+        .template-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00ff41, #ff0040, #00ff41);
+            animation: shimmer 3s infinite;
         }
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; transform: translateX(-100%); }
+            50% { opacity: 0.5; transform: translateX(100%); }
+        }
+        .template-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0,255,65,0.6);
+            border-color: #ff0040;
+        }
+        .template-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 25px currentColor;
+        }
+        .template-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .template-desc {
+            opacity: 0.85;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+        .qr-placeholder {
+            width: 160px;
+            height: 160px;
+            border: 4px solid #00ff41;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #f0f8ff, #e6f3ff);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        /* MODAL */
         .modal {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            background: rgba(0,0,0,0.98) !important;
-            z-index: 9999 !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            padding: 20px !important;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.98);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
         }
         .modal-content {
-            background: rgba(0,20,40,0.99) !important;
-            border: 4px solid #00ff41 !important;
-            border-radius: 25px !important;
-            padding: 40px !important;
-            max-width: 550px !important;
-            width: 95% !important;
-            max-height: 90vh !important;
-            overflow-y: auto !important;
-            position: relative !important;
-            box-shadow: 0 30px 80px rgba(0,255,65,0.5) !important;
+            background: rgba(0,15,35,0.99);
+            border: 4px solid #00ff41;
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 550px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0,255,65,0.5);
+            transform: scale(0.8);
+            transition: all 0.3s;
         }
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: #ff0040;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .qr-deploy {
+            width: 220px !important;
+            height: 220px !important;
+            border: 5px solid #00ff41 !important;
+            border-radius: 25px !important;
+            margin: 20px auto !important;
+        }
+        .url-input {
+            width: 100%;
+            padding: 15px;
+            background: #000;
+            color: #00ff41;
+            border: 2px solid #00ff41;
+            border-radius: 15px;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .modal-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        .guide {
+            background: rgba(255,0,64,0.15);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            font-size: 14px;
+            border-left: 5px solid #ff0040;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .templates-grid { grid-template-columns: 1fr !important; padding: 20px 10px !important; }
-            .hero h2 { font-size: 2.5rem !important; }
+            .templates-grid { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 2.5rem; }
+            .header { padding: 15px 20px; }
+            .header-content { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
 <body>
     <!-- HEADER -->
-    <header class="header">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <div class="logo">🎣 PHISHING ARSENAL</div>
-                <div>
-                    <h1>v3.0 • 50+ TEMPLATES LIVE</h1>
-                    <p style="margin: 5px 0 0 0; opacity: 0.9; font-size: 1.1rem;">MazkiplayCyberSecurity • Authorized Pentest</p>
-                </div>
-            </div>
-            <div style="display: flex; gap: 20px;">
-                <a href="dashboard.html" style="color: #00ff41 !important; text-decoration: none; padding: 15px 30px; background: rgba(0,255,65,0.2); border: 2px solid #00ff41; border-radius: 30px; font-weight: bold;">← DASHBOARD</a>
-                <button onclick="generateCustom()" class="btn-phish" style="background: linear-gradient(45deg, #ffd700, #ffed4e) !important; color: #000 !important;">🎨 CUSTOM</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero">
-        <h2>🚀 INSTANT PHISH DEPLOYMENT</h2>
-        <p style="font-size: 1.4rem; opacity: 0.9; margin-bottom: 50px;">Klik template → QR Code + HTML → Host gratis → PHISH LIVE!</p>
-        <div class="hosting-grid">
-            <div style="text-align: center;">
-                <div style="font-size: 4rem; margin-bottom: 20px;">1️⃣</div>
-                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">GENERATE</h3>
-                <p>Klik icon → <strong>QR + HTML</strong> muncul INSTANT</p>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 4rem; margin-bottom: 20px;">2️⃣</div>
-                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">HOST FREE</h3>
-                <p><strong>00webhost.com</strong> → Upload HTML → Domain gratis</p>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 4rem; margin-bottom: 20px;">3️⃣</div>
-                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">PHISH LIVE</h3>
-                <p>QR Code → Target scan → <strong>Credentials LIVE!</strong></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- TEMPLATES -->
-    <section class="templates-grid">
-        <!-- MANDIRI -->
-        <div class="template-card" onclick="deployTemplate('mandiri')" style="cursor: pointer !important;">
-            <div style="text-align: center;">
-                <div class="icon-phish">🏦</div>
-                <h3>BANK MANDIRI</h3>
-                <p style="opacity: 0.85; font-size: 15px;">Login • OTP • Transfer</p>
-            </div>
-            <div style="text-align: center;">
-                <canvas class="qr-code" id="qr-mandiri"></canvas>
-                <button class="btn-phish">🚀 DEPLOY NOW</button>
-            </div>
-        </div>
-
-        <!-- BCA -->
-        <div class="template-card" onclick="deployTemplate('bca')" style="cursor: pointer !important;">
-            <div style="text-align: center;">
-                <div class="icon-phish">💳</div>
-                <h3>BCA MOBILE</h3>
-                <p style="opacity: 0.85; font-size: 15px;">KlikBCA • OTP Verified</p>
-            </div>
-            <div style="text-align: center;">
-                <canvas class="qr-code" id="qr-bca"></canvas>
-                <button class="btn-phish">🚀 DEPLOY NOW</button>
-            </div>
-        </div>
-
-        <!-- GOJEK -->
-        <div class="template-card" onclick="deployTemplate('gojek')" style="cursor: pointer !important;">
-            <div style="text-align: center;">
-                <div class="icon-phish">🏍️</div>
-                <h3>GOJEK</h3>
-                <p style="opacity: 0.85; font-size: 15px;">Login • Promo Claim</p>
-            </div>
-            <div style="text-align: center;">
-                <canvas class="qr-code" id="qr-gojek"></canvas>
-                <button class="btn-phish">🚀 DEPLOY NOW</button>
-            </div>
-        </div>
-
-        <!-- SHOPEE -->
-        <div class="template-card" onclick="deployTemplate('shopee')" style="cursor: pointer !important; border-color: #ff6b35 !important; background: rgba(255,107,53,0.15) !important;">
-            <div style="text-align: center;">
-                <div class="icon-phish" style="color: #ff6b35 !important;">🛒</div>
-                <h3 style="color: #ff6b35 !important;">SHOPEE</h3>
-                <p style="opacity: 0.85; font-size: 15px;">Voucher • Login</p>
-            </div>
-            <div style="text-align: center;">
-                <canvas class="qr-code" id="qr-shopee"></canvas>
-                <button class="btn-phish" style="background: linear-gradient(45deg, #ff6b35, #ff8e53) !important;">🚀 DEPLOY NOW</button>
-            </div>
-        </div>
-
-        <!-- WHATSAPP -->
-        <div class="template-card" onclick="deployTemplate('whatsapp')" style="cursor: pointer !important; border-color: #25D366 !important; background: rgba(37,211,102,0.15) !important;">
-            <div style="text-align: center;">
-                <div class="icon-phish" style="color: #25D366 !important;">💬</div>
-                <h3 style="color: #25D366 !important;">WHATSAPP</h3>
-                <p style="opacity: 0.85; font-size: 15px;">Business Verify</p>
-            </div>
-            <div style="text-align: center;">
-                <canvas class="qr-code" id="qr-whatsapp"></canvas>
-                <button class="btn-phish" style="background: linear-gradient(45deg, #25D366, #128C7E) !important;">🚀 DEPLOY NOW</button>
-            </div>
-        </div>
-
-        <!-- CUSTOM -->
-        <div class="template-card" onclick="generateCustom()" style="cursor: pointer !important; border-color: #9b59b6 !important; background: linear-gradient(45deg, rgba(155,89,182,0.3), rgba(155,89,182,0.1)) !important;">
-            <div style="text-align: center;">
-                <div class
+    <header
